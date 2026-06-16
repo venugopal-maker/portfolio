@@ -4,29 +4,33 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Venu Gopal Boddeboina — Portfolio</title>
-<!--favicon-->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet"/>
+
+ <!--favicon-->
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 65'><text y='0.9em' font-size='70'>VG</text></svg>">
 
-  <link rel="stylesheet" href="style.css">
-  
+<link rel="stylesheet" href="style.css">
 </head>
-  
 <body>
 
 <!-- INTRO OVERLAY -->
 <div class="intro-overlay" id="introOverlay">
-  <div class="curtain curtain-left"></div>
-  <div class="curtain curtain-right"></div>
+  <div class="intro-rings">
+    <div class="intro-ring"></div>
+    <div class="intro-ring"></div>
+    <div class="intro-ring"></div>
+    <div class="intro-ring"></div>
+  </div>
   <div class="intro-glow"></div>
   <div class="intro-name-wrap" id="introName">
     <div class="intro-eyebrow">Welcome to my portfolio</div>
     <div class="intro-name">
-      <span class="name-part name-left" id="nameLeft">Venu Gopal</span>
-      <span class="name-part name-right" id="nameRight"> Boddeboina</span>
+      <span class="name-line name-line-1">Venu Gopal</span>
+      <span class="name-line name-line-2">Boddeboina</span>
     </div>
     <div class="intro-title-line">
       <span class="intro-line-bar"></span>
-      <span class="intro-role-text">Software Developer</span>
+      <span class="intro-role-text">Software Developer </span>
       <span class="intro-line-bar"></span>
     </div>
   </div>
@@ -34,10 +38,6 @@
     <span class="tap-pulse"></span>
     Click · Tap · Press Enter
   </div>
-  <div class="corner corner-tl"></div>
-  <div class="corner corner-tr"></div>
-  <div class="corner corner-bl"></div>
-  <div class="corner corner-br"></div>
 </div>
 
 <!-- PORTFOLIO -->
@@ -61,7 +61,10 @@
     <p class="hero-bio">Passionate Software Developer Fresher with hands-on experience in Java, JDBC, Servlets, SQL, HTML, and CSS. I enjoy building real-world projects and am eager to continuously learn new technologies and contribute to innovative software development.</p>
     <div class="hero-btns">
       <a href="#projects" class="btn btn-primary">View My Work</a>
-      <a href="mailto:venugopalboddeboina032@Gmail.com" class="btn btn-outline">Get in Touch</a>
+      <!-- <a href="mailto:venugopalboddeboina032@Gmail.com" class="btn btn-outline">Get in Touch</a> -->
+        <a href="#contact" class="btn btn-outline">Get in Touch</a>
+    
+    
     </div>
   </div>
   <div class="hero-card">
@@ -268,29 +271,38 @@
 </footer>
 
 <script>
-  const overlay   = document.getElementById('introOverlay');
-  const nameLeft  = document.getElementById('nameLeft');
-  const nameRight = document.getElementById('nameRight');
-  const tapHint   = document.getElementById('tapHint');
+  const overlay  = document.getElementById('introOverlay');
+  const nameWrap = document.getElementById('introName');
+  const tapHint  = document.getElementById('tapHint');
   let triggered = false;
 
-  function triggerSplit() {
+  function triggerZoom() {
     if (triggered) return;
     triggered = true;
+
+    // Hide hint
     tapHint.classList.add('hint-hide');
-    nameLeft.classList.add('split-left');
-    nameRight.classList.add('split-right');
-    setTimeout(() => overlay.classList.add('curtains-open'), 400);
+
+    // Step 1 — name zooms in big & fades out
+    nameWrap.classList.add('zoom-exit');
+
+    // Step 2 — whole overlay fades out
+    setTimeout(() => {
+      overlay.style.pointerEvents = 'none';
+      overlay.classList.add('fade-out');
+    }, 350);
+
+    // Step 3 — remove from DOM
     setTimeout(() => {
       overlay.style.display = 'none';
       document.body.style.overflow = '';
-    }, 1400);
+    }, 1100);
   }
 
-  overlay.addEventListener('click', triggerSplit);
-  overlay.addEventListener('touchstart', triggerSplit, { passive: true });
+  overlay.addEventListener('click', triggerZoom);
+  overlay.addEventListener('touchstart', triggerZoom, { passive: true });
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter') triggerSplit();
+    if (e.key === 'Enter') triggerZoom();
   });
   document.body.style.overflow = 'hidden';
 
