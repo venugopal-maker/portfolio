@@ -263,3 +263,95 @@ footer a { color:var(--primary); font-weight:600; }
   .reveal,.tl-item{animation:none!important;transition:none!important;opacity:1!important;transform:none!important;}
   .intro-overlay{display:none!important;}
 }
+
+
+/* ── CERTIFICATIONS ── */
+.cert-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin-bottom: 1.5rem;
+}
+.cert-filter-btn {
+  border: 1px solid var(--border);
+  background: #fff;
+  color: var(--muted);
+  padding: 0.5rem 0.9rem;
+  border-radius: 999px;
+  font: inherit;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.cert-filter-btn:hover,
+.cert-filter-btn.active {
+  color: #fff;
+  background: var(--primary);
+  border-color: var(--primary);
+}
+.cert-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(245px, 1fr));
+  gap: 1.2rem;
+}
+.cert-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.4rem;
+  min-width: 0;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+.cert-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--primary);
+  box-shadow: 0 8px 22px rgba(37, 99, 235, 0.08);
+}
+.cert-card[hidden] { display: none !important; }
+.cert-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  height: 44px;
+  padding: 0 0.45rem;
+  border-radius: 10px;
+  background: var(--primary-light);
+  color: var(--primary);
+  font-size: 0.82rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+.cert-type {
+  color: var(--primary);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  font-weight: 700;
+  margin-bottom: 0.45rem;
+}
+.cert-title {
+  font-size: 0.98rem;
+  line-height: 1.5;
+  margin-bottom: 0.55rem;
+}
+.cert-issuer, .cert-date, .cert-note {
+  color: var(--muted);
+  font-size: 0.82rem;
+  line-height: 1.6;
+}
+.cert-date { margin-top: 0.2rem; }
+.cert-note { margin-top: 0.6rem; }
+.cert-status {
+  display: inline-block;
+  margin-top: auto;
+  padding-top: 1rem;
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-style: italic;
+}
+
